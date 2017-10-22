@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+$(function() {
+    $('#root').click(function() {
+        if ($(this).is(':checked')) {
+            $('#role').removeAttr('disabled');
+        } else {
+            $('#role').attr('disabled', 'disabled');
+        }
+    });
+});
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -60,6 +72,22 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                         <div class="form-group">
+                            <label for="admin" class="col-md-4 control-label">Admin</label> 
+
+                            <div class="col-md-6">
+                                <input type="checkbox" id = "root" name="root" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rola" class="col-md-4 control-label">Rola</label> 
+
+                            <div class="col-md-6">
+                                <input id="role" type="password" class="form-control" name="role" disabled="" />
+                            </div>
+                        </div>
+                                                        
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
