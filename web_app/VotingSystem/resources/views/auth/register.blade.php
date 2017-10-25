@@ -84,7 +84,7 @@ $(function() {
                             <label for="rola" class="col-md-4 control-label">Rola</label> 
 
                             <div class="col-md-6">
-                                <input id="role" type="password" class="form-control" name="role" disabled="" />
+                                <input id="role" class="form-control" name="role" disabled="" />
                             </div>
                         </div>
                                                         
