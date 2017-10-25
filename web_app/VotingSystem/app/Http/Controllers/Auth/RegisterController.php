@@ -64,9 +64,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(array_key_exists('role',$data))
+        if(array_key_exists('root',$data))
         {
-            if($data['role'] == 'Admin')
+            if($data['root'] == 'on')
             {
                 return Admin::create([
                   'name' => $data['name'],
