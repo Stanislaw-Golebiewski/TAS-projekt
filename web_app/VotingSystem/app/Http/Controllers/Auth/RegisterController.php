@@ -64,13 +64,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['role'] == 'Admin')
+        if(array_key_exists('role',$data))
         {
-          return Admin::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-          ]);
+            if($data['role'] == 'Admin')
+            {
+                return Admin::create([
+                  'name' => $data['name'],
+                  'email' => $data['email'],
+                  'password' => bcrypt($data['password']),
+                ]);
+            }
         }
 
         return User::create([
