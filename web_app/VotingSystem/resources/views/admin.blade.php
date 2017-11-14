@@ -13,11 +13,12 @@
 
                     @endcomponent
                     <div class="btn-toolbar">
-                        <button type="button" class="btn btn-primary btn-lg col-md-8">
+                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>  Dodaj głosującego</button>
                     </div>
+
                     <div class="btn-toolbar">
-                        <button type="button" class="btn btn-primary btn-lg col-md-8">
+                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/admin/addcandidate') }}'">
                         <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>  Dodaj kandydata</button>
                     </div>
                 </div>

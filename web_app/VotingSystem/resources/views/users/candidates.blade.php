@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -10,24 +13,24 @@
                     @endcomponent
                     <div class="row">
                             <div class="col-md-2 col-md-offset-1">IMIĘ </div>
-              
-                            <div class="col-md-6" ><input class="form-control" name="name" type="text"></div>
+    
+                            <div class="col-md-4" ><input class="form-control" name="name" type="text"></div>
                     </div>
                     <div class="row">
                             <div class="col-md-2 col-md-offset-1">NAZWISKO </div>
               
-                            <div class="col-md-6" ><input class="form-control" name="surname" type="text"></div>
+                            <div class="col-md-4" ><input class="form-control" name="surname" type="text"></div>
                     </div>
 
                     <div class="row">
                             <div class="col-md-2 col-md-offset-1">DATA URODZENIA </div>
               
-                            <div class="col-md-6" ><input class="form-control" name="date" type="text"></div>
+                            <div class="col-md-4" ><input class="form-control" name="date" type="text"></div>
                     </div>
                     <div class="row">
                             <div class="col-md-2 col-md-offset-1">PARTIA POLITYCZNA </div>
               
-                            <div class="col-md-6" ><input class="form-control" name="faction" type="text"></div>
+                            <div class="col-md-4" ><input class="form-control" name="faction" type="text"></div>
                     </div>
                     <div class="row">
                             <div class="col-md-2 col-md-offset-1">WYKSZTAŁCENIE </div>
@@ -41,11 +44,12 @@
                                     </select>
                                 </div>
                     </div>
-                    <div class="col-md-5 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary btn-lg btn-block" name='submit' >
-                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>DODAJ ZADANIE</button>
+                    <div class="col-md-8 col-md-offset-4">
+                          <button type="submit" class="btn btn btn-primary btn-lg btn-block" name='submit' >
+                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>DODAJ KANDYDATA</button>
                     </div>
             </div>
         </div>
     </div>
 </div>
+@endsection

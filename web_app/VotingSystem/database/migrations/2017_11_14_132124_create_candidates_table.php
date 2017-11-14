@@ -17,6 +17,7 @@ class CreateCandidatesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('surname');
+            $table->dateTime('born');
             $table->string('school');
             $table->string('fraction');
             $table->integer('numberonlist');
