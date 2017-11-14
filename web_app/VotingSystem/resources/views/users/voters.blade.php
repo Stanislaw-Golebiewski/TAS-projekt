@@ -9,9 +9,6 @@
                 <div class="panel-heading">Adding Voter</div>
 
                 <div class="panel-body">
-                    @component('components.who')
-
-                    @endcomponent
                     <div class="row">
                             <div class="col-md-2 col-md-offset-1">IMIĘ </div>
               
@@ -35,7 +32,7 @@
                     </div>
                     <div class="col-md-5 col-md-offset-3">
                           <button type="submit" class="btn btn-primary btn-lg btn-block" name='submit' >
-                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>DODAJ ZADANIE</button>
+                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>DODAJ GŁOSUJĄCEGO</button>
                     </div>
             </div>
         </div>

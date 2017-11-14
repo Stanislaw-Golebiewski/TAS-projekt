@@ -8,9 +8,6 @@
                 <div class="panel-heading">Adding Candidate</div>
 
                 <div class="panel-body">
-                    @component('components.who')
-
-                    @endcomponent
                     <div class="row">
                             <div class="col-md-2 col-md-offset-1">IMIĘ </div>
     

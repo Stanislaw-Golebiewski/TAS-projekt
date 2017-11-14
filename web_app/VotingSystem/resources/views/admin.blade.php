@@ -13,7 +13,7 @@
 
                     @endcomponent
                     <div class="btn-toolbar">
-                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4">
+                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/admin/addvoter') }}'">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>  Dodaj głosującego</button>
                     </div>
 
