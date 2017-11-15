@@ -1,0 +1,26 @@
+{
+    "name": "---",
+    "version": "1.0.0",
+    "description": "---",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "dependencies": {
+        "bluebird": "^3.5.0",
+        "sealious": "github:sealcode/sealious-archive#alpha",
+        "sealious-datastore-mongo": "github:sealcode/sealious-datastore-mongo#alpha",
+        "sealious-www-server": "sealcode/sealious-www-server#alpha",
+        "uuid": "^3.1.0"
+    },
+    "scripts": {
+        "start-db": "docker-compose up -d db",
+        "start": "docker-compose up app webserver"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Stanislaw-Golebiewski/TAS-projekt.git"
+    },
+    "author": "",
+    "license": "ISC"
+}

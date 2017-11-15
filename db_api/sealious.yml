@@ -1,0 +1,5 @@
+core:
+  datastore: mongo
+datastore_mongo:
+  host: db
+  db_name: sealious
