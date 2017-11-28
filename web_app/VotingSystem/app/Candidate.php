@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Candidate extends Model
 {
     protected $table = 'candidates';
-    protected $data = ['id','name', 'surname', 'school', 'fraction','numberonlist','votes'];
+    protected $data = ['id','name', 'surname','born', 'school', 'fraction','numberonlist','votes'];
 }
