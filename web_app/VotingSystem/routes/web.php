@@ -28,4 +28,5 @@ Route::prefix('admin')->group(function()
 	Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
 	Route::get('/addcandidate','CandidateController@welcome')->name('admin.welcome');
 	Route::get('/addvoter','VoterController@welcome')->name('admin.welcome');
+	Route::post('/addvoter','VoterController@store')->name('admin.store');
 });

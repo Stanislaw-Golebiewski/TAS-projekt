@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="row">
-                            <div class="col-md-2 col-md-offset-1">DATA URODZENIA </div>
+                            <div class="col-md-2 col-md-offset-1">ROK URODZENIA </div>
               
                             <div class="col-md-4" ><input class="form-control" name="date" type="text"></div>
                     </div>
