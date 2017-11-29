@@ -32,6 +32,7 @@ class CandidateController extends Controller
 	    $user->school = $request->school;
 	    $user->fraction = $request->input('fraction');
 	    $user->numberonlist = rand(1,15);
+			$user->votes = 0;
 	    $user->save();
 
 	    return view('admin');
