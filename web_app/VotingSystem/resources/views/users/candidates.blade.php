@@ -9,7 +9,7 @@
         changeYear: true,
         changeMonth: true,
         dateFormat: "dd/mm/yy",
-        yearRange: "1900:<?php echo date("Y"); ?>"
+        yearRange: "<?php echo date("Y")-110; ?>:<?php echo date("Y"); ?>"
       });
   } );
 </script>
