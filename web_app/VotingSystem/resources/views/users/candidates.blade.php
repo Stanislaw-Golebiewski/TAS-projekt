@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+        changeYear: true,
+        changeMonth: true,
+        dateFormat: "dd/mm/yy",
+        yearRange: "1900:<?php echo date("Y"); ?>"
+      });
+  } );
+</script>
+<style>
+.col-md-12{
+  padding: 5px;
+}
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -9,39 +26,19 @@
                 <div class="panel-heading">Adding Candidate</div>
                     {{ csrf_field() }}
                 <div class="panel-body">
-                    <div class="row">
-                            <div class="col-md-2 col-md-offset-1">IMIĘ </div>
-    
-                            <div class="col-md-4" ><input class="form-control" name="name" type="text"></div>
-                    </div>
-                    <div class="row">
-                            <div class="col-md-2 col-md-offset-1">NAZWISKO </div>
-              
-                            <div class="col-md-4" ><input class="form-control" name="surname" type="text"></div>
-                    </div>
-
-                    <div class="row">
-                            <div class="col-md-2 col-md-offset-1">ROK URODZENIA </div>
-              
-                            <div class="col-md-4" ><input class="form-control" name="born" type="text"></div>
-                    </div>
-                    <div class="row">
-                            <div class="col-md-2 col-md-offset-1">PARTIA POLITYCZNA </div>
-              
-                            <div class="col-md-4" ><input class="form-control" name="fraction" type="text"></div>
-                    </div>
-                    <div class="row">
-                            <div class="col-md-2 col-md-offset-1">WYKSZTAŁCENIE </div>
-                                <div class="col-xs-2 selectContainer">
-                                    <select class="form-control" name="school">
-                                        <option value =""></option>
-                                        <option value ="podstawowe">podstawowe</option>
-                                        <option value ="zawodowe">zawodowe</option>
-                                        <option value ="średnie">średnie</option>
-                                        <option value ="wyższe">wyższe</option>
-                                    </select>
-                                </div>
-                    </div>
+                            <div class="col-md-12" ><input class="form-control" name="name" type="text" placeholder="Imię" required></div>
+                            <div class="col-md-12" ><input class="form-control" name="surname" type="text" placeholder="Nazwisko" required></div>
+                            <div class="col-md-12" ><input class="form-control" name="born" type="text" placeholder="Data urodzenia" id="datepicker" required></div>
+                            <div class="col-md-12" ><input class="form-control" name="fraction" type="text" placeholder="Partia polityczna" required></div>
+                            <div class="col-md-12 selectContainer">
+                                <select class="form-control" name="school">
+                                    <option hidden>Wybierz wykształcenie</option>
+                                    <option value ="podstawowe">podstawowe</option>
+                                    <option value ="zawodowe">zawodowe</option>
+                                    <option value ="średnie">średnie</option>
+                                    <option value ="wyższe">wyższe</option>
+                                </select>
+                            </div>
                     <div class="col-md-8 col-md-offset-4">
                           <button type="submit" class="btn btn btn-primary btn-lg btn-block" name='submit' >
                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>DODAJ KANDYDATA</button>
