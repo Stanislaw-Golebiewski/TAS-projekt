@@ -15,8 +15,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/overview-demo', function () {
-    return view('overview');
+Route::prefix('debug')->group(function()
+{
+  Route::get('/overview', function () {
+      return view('overview');
+  });
+
+  Route::get('/addcandidate', function () {
+      return view('users.candidates');
+  });
+
+  Route::get('/addvoter', function () {
+      return view('users.voters');
+  });
+
+  Route::get('/candidates', function () {
+      return view('users.candidatesList');
+  });
+
+  Route::get('/lists', function () {
+      return view('lists');
+  });
+
+  Route::get('/addvote', function () {
+      return view('vote.add');
+  });
 });
 
 Auth::routes();
