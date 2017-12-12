@@ -7,7 +7,13 @@ zalogowanie odbywa się przez wykonanie odpowiedniego **POST**-a pod adres
 
 ```
 http://<tutaj_url>:8080/api/v1/sessions
+
+lub
+
+https://<tutaj_url>:80/api/v1/sessions
 ```
+
+_**Druga metoda protokołem HTTPS jest lepsza**_
 
 Tak powinna wyglądać zawartoś POST-a który wysyłamy:
 
@@ -114,4 +120,3 @@ dostęp:
 ### Testowanie
 
 Jeśli API zawodzi i chcecie się upewnić czy jest to problem wewnatrz waszej aplikacji czy błąd w API, lub chcielibyście podejrzeć co dokładnie jest zwracane, można użyć narzędzi takich jak [postman](https://www.getpostman.com/apps), [httpie](https://httpie.org/), czy curl
-
