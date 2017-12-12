@@ -5,8 +5,11 @@ const App = new Sealious.App();
 
 const dependencies = [
     "access-strategies/roles.js",
+    "access-strategies/same-voter.js",
     "field-types/role.js",
     "collections/users.js",
+    "collections/voters.js",
+    // "collections/constituencies.js"
 ];
 
 dependencies.forEach(dependency => require(`./${dependency}`)(App));

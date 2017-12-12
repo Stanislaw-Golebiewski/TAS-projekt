@@ -4,10 +4,16 @@ const Sealious = require("sealious");
 
 const allowed_roles = new Map();
 
-allowed_roles.set("admin", ["admin", "moderator", "applicant"]);
-allowed_roles.set("moderator", []);
-allowed_roles.set("applicant", []);
-allowed_roles.set(null, ["applicant"]);
+allowed_roles.set("admin", [
+    "admin",
+    "komisja_lokalna",
+    "komisja_centralna",
+    "wyborca",
+]);
+allowed_roles.set("komisja_centralna", ["komisja_lokalna", "wyborca"]);
+allowed_roles.set("komisja_lokalna", []);
+allowed_roles.set("wyborca", []);
+allowed_roles.set(null, ["wyborca"]);
 
 function decide(role, target_role) {
     if (allowed_roles.get(role).indexOf(target_role) !== -1) {
