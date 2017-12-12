@@ -1,6 +1,6 @@
-#TAS API - dokumentacja v1.0
+# TAS API - dokumentacja v1.0
 
-###Logowanie
+### Logowanie
 
 By wykonywać zapytania do api użytkownik najpierw musi się zalogować i utworzyć sesje. Endpointem do naszego api jest **/api/v1/sessions**,
 zalogowanie odbywa się przez wykonanie odpowiedniego **POST**-a pod adres
@@ -22,7 +22,7 @@ Jeśli dane są poprawne zostanie zwrócona informacja o powodzeniu, razem z coo
 
 Jeśli coś się nie będzie zgadzać, np. podamy złe hasło, zostanie zwrócona odpowiednia informacja
 
-###Wydobywanie zasobów
+### Wydobywanie zasobów
 
 Do wydobycia zasobów służy metoda **GET**.
 
@@ -42,7 +42,8 @@ GET http://<tutaj_url>:8080/api/v1/collections/<nazwa_kolekcji>/<id_zasobu>
 GET http://<tutaj_url>:8080/api/v1/collections/voters/S1gt6kt
 ```
 
-###Dodawanie zasobów
+### Dodawanie zasobów
+
 Do wydobycia zasobów służy metoda **POST**.
 
 By dodać zasób do wybranej kolekcji wykonujemy:
@@ -53,8 +54,6 @@ POST http://<tutaj_url>:8080/api/v1/collections/<nazwa_kolekcji>
   ...co chemy dodać
 }
 ```
-
-####Przykład
 
 Jeśli admin chce dodać nowego użytkownika wykona:
 
@@ -73,7 +72,8 @@ Jeśli dodanie się nie uda, zostanie zwrócony odpowiedni komunikat z opisem b�
 
 ### Dostępne kolekcje
 
-####**users**
+#### **users**
+
 opis: _do przechowywania kont wszystkich urzytkowników_
 
 pola:
@@ -93,7 +93,8 @@ dostęp:
 * **wyborca** może zobaczyć i edytować tylko siebie
 * nikt nie ma prawa do usuwania czegokolwiek
 
-####**voters**
+#### **voters**
+
 opis: _do przechowywania danych związanych z wyborcami_
 
 pola:
@@ -102,10 +103,15 @@ pola:
 * **imię**
 * **nazwisko**
 * **numer_telefonu** - na razie typu text, czyli można tam dać wszystko
-* **adres** - też tekstm, tak, będzie trzeba rozbić na mniejsze pola :)
+* **adres** - też tekst, tak, będzie trzeba rozbić na mniejsze pola :)
 
 dostęp:
 
-* **admin** ma prawo do tworzenia nowych
-* **wyborca** może zobaczyć i edytować tylko siebie
+* **admin** ma prawo do tworzenia nowych wyborców, edytowania ich i podglądu wszystkich
+* **wyborca** może podejrzeć tylko swoje dane
 * nikt nie ma prawa do usuwania czegokolwiek
+
+### Testowanie
+
+Jeśli API zawodzi i chcecie się upewnić czy jest to problem wewnatrz waszej aplikacji czy błąd w API, lub chcielibyście podejrzeć co dokładnie jest zwracane, można użyć narzędzi takich jak [postman](https://www.getpostman.com/apps), [httpie](https://httpie.org/), czy curl
+
