@@ -17,7 +17,7 @@ class CandidateController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'born' => 'required|string|max:4',
+            'born' => 'required|string|max:4', 'regex:/^[1-9][0-9]{3}$/',
             'school' => 'required|string|max:50',
             'fraction' => 'required|string|max:80',
         ]);
