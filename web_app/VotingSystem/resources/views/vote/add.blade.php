@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.overview')
 
 @section('content')
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -6,12 +6,26 @@
 <script>
   $( function() {
     $( "#datepicker" ).datepicker({
+        onSelect: function() {
+          $( "#datepicker2" ).prop( "disabled", false );
+          $( "#datepicker2" ).val("");
+        },
         changeYear: true,
         changeMonth: true,
         dateFormat: "dd/mm/yy",
         yearRange: "<?php echo date("Y")-110; ?>:<?php echo date("Y"); ?>"
       });
     $( "#datepicker2" ).datepicker({
+        onSelect: function(date) {
+          $( "#datepicker2" ).prop( "disabled", false );
+          var startDate = $.datepicker.parseDate('dd/mm/yy', $('#datepicker').val());
+          var endDate = $.datepicker.parseDate('dd/mm/yy', $('#datepicker2').val());
+          if(endDate < startDate)
+          {
+            $( "#datepicker2" ).val("");
+            alert("Błędna data zakończenia!");
+          }
+        },
         changeYear: true,
         changeMonth: true,
         dateFormat: "dd/mm/yy",
@@ -42,7 +56,7 @@
               </select>
             </div>
             <div class="col-md-12" ><input class="form-control" name="born" type="text" placeholder="Data rozpoczęcia" id="datepicker" required></div>
-            <div class="col-md-12" ><input class="form-control" name="born" type="text" placeholder="Data zakończenia" id="datepicker2" required></div>
+            <div class="col-md-12" ><input class="form-control" name="born" type="text" placeholder="Data zakończenia" id="datepicker2" required disabled></div>
             <div class="col-md-8 col-md-offset-4">
               <button type="submit" class="btn btn btn-primary btn-lg btn-block" name='submit' >
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Rozpocznij</button>
