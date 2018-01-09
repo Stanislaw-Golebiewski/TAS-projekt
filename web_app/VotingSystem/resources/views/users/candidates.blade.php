@@ -30,6 +30,7 @@
                             <div class="col-md-12" ><input class="form-control" name="surname" type="text" placeholder="Nazwisko" required></div>
                             <div class="col-md-12" ><input class="form-control" name="born" type="text" placeholder="Data urodzenia" id="datepicker" required></div>
                             <div class="col-md-12" ><input class="form-control" name="fraction" type="text" placeholder="Partia polityczna" required></div>
+                            <div class="col-md-12" ><input class="form-control" name="numberonlist" type="text" placeholder="Numer na liście" required></div>
                             <div class="col-md-12 selectContainer">
                                 <select class="form-control" name="school">
                                     <option hidden>Wybierz wykształcenie</option>

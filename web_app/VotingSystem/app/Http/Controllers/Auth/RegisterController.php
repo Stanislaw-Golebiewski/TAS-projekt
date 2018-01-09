@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Client;
 use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -64,10 +66,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $client = new Client();
+
         if(array_key_exists('root',$data))
         {
             if($data['root'] == 'on')
-            {
+            {      
+                $r = $client->request('POST', 'http://vps487563.ovh.net:8080/api/v1/sessions?username=admin&password=d36d19a3-246b-45ef-9038-18de737b103e');
+
+                // NIE UTRZYMUJE SESJI $r = $client->request('POST', 'http://vps487563.ovh.net:8080/api/v1/collections/users?username=ppodolski&password=3thof04#&role=wyborca');
                 return Admin::create([
                   'name' => $data['name'],
                   'email' => $data['email'],
@@ -76,7 +83,6 @@ class RegisterController extends Controller
                 ]);
             }
         }
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
