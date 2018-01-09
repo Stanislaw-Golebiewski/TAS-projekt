@@ -24,6 +24,7 @@
                     </thead>
                     <tbody>
                       @foreach ($candidates as $candidate)
+                      <tr>
                         <td><?php echo $candidate->id ?></td>
                         <td><?php echo $candidate->name ?></td>
                         <td><?php echo $candidate->surname ?></td>
@@ -31,6 +32,7 @@
                         <td><?php echo $candidate->school ?></td>
                         <td><?php echo $candidate->fraction ?></td>
                         <td><?php echo $candidate->numberonlist ?></td>
+                        </tr>
                       @endforeach
                     </tbody>
                   </table>
