@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
         <form class="form-horizontal" method="POST" action="{{ route('admin.add') }}">
             <div class="panel panel-default">
-                <div class="panel-heading">List of Candidates</div>
+                <div class="panel-heading">Lista kandydatów</div>
                     {{ csrf_field() }}
                 <div class="panel-body">
                   <table class="table">
@@ -32,7 +32,7 @@
                         <td><?php echo $candidate->school ?></td>
                         <td><?php echo $candidate->fraction ?></td>
                         <td><?php echo $candidate->numberonlist ?></td>
-                        </tr>
+                      </tr>
                       @endforeach
                     </tbody>
                   </table>
