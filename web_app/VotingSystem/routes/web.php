@@ -29,9 +29,7 @@ Route::prefix('debug')->group(function()
       return view('users.voters');
   });
 
-  Route::get('/candidates', function () {
-      return view('users.candidatesList');
-  });
+  Route::get('/candidates', 'ListController@index');
 
   Route::get('/lists', function () {
       return view('lists');

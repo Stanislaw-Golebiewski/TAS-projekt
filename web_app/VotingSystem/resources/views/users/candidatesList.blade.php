@@ -16,28 +16,22 @@
                         <th scope="col">#</th>
                         <th scope="col">Imię</th>
                         <th scope="col">Nazwisko</th>
+                        <th scope="col">Rok urodzenie</th>
+                        <th scope="col">Wyszktałcenie</th>
                         <th scope="col">Partia</th>
+                        <th scope="col">Numer na liście</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Jan</td>
-                        <td>Kowalski</td>
-                        <td>PW</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Tomek</td>
-                        <td>Drabik</td>
-                        <td>QZ</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Maciej</td>
-                        <td>Makuła</td>
-                        <td>WON</td>
-                      </tr>
+                      @foreach ($candidates as $candidate)
+                        <td><?php echo $candidate->id ?></td>
+                        <td><?php echo $candidate->name ?></td>
+                        <td><?php echo $candidate->surname ?></td>
+                        <td><?php echo $candidate->born ?></td>
+                        <td><?php echo $candidate->school ?></td>
+                        <td><?php echo $candidate->fraction ?></td>
+                        <td><?php echo $candidate->numberonlist ?></td>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
