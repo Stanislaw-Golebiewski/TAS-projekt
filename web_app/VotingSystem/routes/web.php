@@ -38,6 +38,9 @@ Route::prefix('debug')->group(function()
   Route::get('/addvote', function () {
       return view('vote.add');
   });
+
+  Route::get('/voteforuser', 'ListController@votelist');
+  Route::get('/results', 'ListController@results');
 });
 
 Auth::routes();

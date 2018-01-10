@@ -12,6 +12,18 @@
                     @component('components.who')
 
                     @endcomponent
+                    <div class="btn-toolbar">
+                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/debug/candidates') }}'">
+                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Lista kandydatów</button>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/debug/voteforuser') }}'">
+                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Zagłosuj</button>
+                    </div>
+                    <div class="btn-toolbar">
+                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/debug/results') }}'">
+                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Wyniki</button>
+                    </div>
                 </div>
                 </div>
             </div>
