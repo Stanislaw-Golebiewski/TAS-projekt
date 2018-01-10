@@ -12,10 +12,11 @@ class ListController extends Controller
 		$candidates = Listing::all();
 		return view('users.candidatesList', compact('candidates'));
 	}
-	public function votelist()
+	public function votelist($id)
 	{
+		#toDo: podmiana id na nazwę z bazy
 		$candidates = Listing::all();
-		return view('vote.votecandidate', compact('candidates'));
+		return view('vote.votecandidate', compact('candidates','id'));
 	}
 	public function results()
 	{
