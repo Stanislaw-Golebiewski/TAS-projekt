@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
         <form class="form-horizontal" method="POST" action="{{ route('admin.add') }}">
             <div class="panel panel-default">
-                <div class="panel-heading">LWyniki wyborów numer X/Y</div>
+                <div class="panel-heading">Wyniki wyborów numer X/Y</div>
                     {{ csrf_field() }}
                 <div class="panel-body">
                   <table class="table">

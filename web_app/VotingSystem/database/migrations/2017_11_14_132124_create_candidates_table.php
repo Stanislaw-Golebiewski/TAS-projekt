@@ -15,6 +15,8 @@ class CreateCandidatesTable extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('numbervote')->unsigned();
+            $table->foreign('numbervote')->references('id')->on('votings');
             $table->string('name');
             $table->string('surname');
             $table->integer('born');
