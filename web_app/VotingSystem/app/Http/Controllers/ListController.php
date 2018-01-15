@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Listing;
 use Illuminate\Http\Request;
-use DB;
 
 class ListController extends Controller
 {
@@ -13,19 +12,10 @@ class ListController extends Controller
 		$candidates = Listing::all();
 		return view('users.candidatesList', compact('candidates'));
 	}
-	public function votelist($id)
+	public function votelist()
 	{
-		#toDo: podmiana id na nazwę z bazy
-		$users = DB::select('SELECT idCandidatesList FROM voting WHERE id = '.$id);
-		$users = explode(',', $users[0]->idCandidatesList);
-		$candidates = array();
-		foreach ($users as $user)
-		{
-			$candidate = DB::select('SELECT * FROM candidates WHERE id = '.$user);
-			array_push($candidates,$candidate[0]);
-		}
-		$votingName = DB::select('SELECT name FROM voting WHERE id = '.$id);
-		return view('vote.votecandidate', compact('candidates','votingName'));
+		$candidates = Listing::all();
+		return view('vote.votecandidate', compact('candidates'));
 	}
 	public function results()
 	{
