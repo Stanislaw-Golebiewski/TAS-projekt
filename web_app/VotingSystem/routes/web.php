@@ -39,7 +39,7 @@ Route::prefix('debug')->group(function()
       return view('vote.add');
   });
 
-  Route::get('/voteforuser', 'ListController@votelist');
+  Route::get('/voteforuserinvoting/{id}', 'ListController@votelist'); # $id
   Route::get('/results', 'ListController@results');
 });
 
