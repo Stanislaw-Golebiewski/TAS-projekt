@@ -32,4 +32,9 @@ class ListController extends Controller
 		$candidates = Listing::all();
 		return view('vote.results', compact('candidates'));
 	}
+	public function showlists()
+	{
+		$lists = DB::select('SELECT * FROM voting');
+		return view('lists',compact('lists'));
+	}
 }

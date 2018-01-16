@@ -24,12 +24,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="clickable" data-href="#" style="cursor: pointer;">
-                          <th scope="row">1</th>
-                          <td>Wybory do Sejmu</td>
-                          <td>9/12/2017</td>
-                          <td>10/12/2017 (koniec za 1 dzień)</td>
+                      @foreach ($lists as $list)
+                      <tr class="clickable" data-href="voteforuserinvoting/<?php echo $list->id ?>" style="cursor: pointer;">
+                          <th scope="row"><?php echo $list->id ?></th>
+                          <td><?php echo $list->name ?></td>
+                          <td><?php echo ($list->startDate != "" ? $list->startDate : "Brak"); ?></td>
+                          <td><?php echo ($list->endDate != "" ? $list->endDate : "Brak"); ?></td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

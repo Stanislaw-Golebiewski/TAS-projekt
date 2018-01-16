@@ -31,15 +31,13 @@ Route::prefix('debug')->group(function()
 
   Route::get('/candidates', 'ListController@index');
 
-  Route::get('/lists', function () {
-      return view('lists');
-  });
+  Route::get('/lists', 'ListController@showlists');
 
   Route::get('/addvote', function () {
       return view('vote.add');
   });
 
-  Route::get('/voteforuserinvoting/{id}', 'ListController@votelist'); # $id
+  Route::get('/voteforuserinvoting/{id}', 'ListController@votelist');
   Route::get('/results', 'ListController@results');
 });
 
