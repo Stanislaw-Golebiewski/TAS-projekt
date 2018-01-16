@@ -4,26 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCandidatesTable extends Migration
+class CreateCandidatelistTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
-        Schema::create('candidates', function (Blueprint $table) {
+        Schema::create('candidatelist', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('numbervote')->unsigned();
             $table->foreign('numbervote')->references('id')->on('votings');
             $table->string('name');
             $table->string('surname');
-            $table->integer('born');
+            $table->date('born');
             $table->string('school');
             $table->string('fraction');
-            $table->integer('numberonlist');
-            $table->integer('votes');
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ class CreateCandidatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidates');
+        Schema::dropIfExists('candidatelist');
     }
 }

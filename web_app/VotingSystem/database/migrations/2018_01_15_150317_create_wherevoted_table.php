@@ -16,8 +16,8 @@ class CreateWherevotedTable extends Migration
         Schema::create('wherevoted', function (Blueprint $table) {
             $table->integer('whovote')->unsigned();
             $table->foreign('whovote')->references('id')->on('users');
-            $table->integer('onwho')->unsigned();
-            $table->foreign('onwho')->references('id')->on('candidates');
+            $table->integer('votingid')->unsigned();
+            $table->foreign('votingid')->references('id')->on('votings');
             $table->rememberToken();
             $table->timestamps();
         });

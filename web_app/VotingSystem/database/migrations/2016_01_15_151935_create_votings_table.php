@@ -17,6 +17,7 @@ class CreateVotingsTable extends Migration
             $table->increments('id');
             $table->date('startdate');
             $table->date('enddate');
+            $table->char('uuid', 36)->collate('ascii_bin');
             });
     }
 
