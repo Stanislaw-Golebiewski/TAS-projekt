@@ -8,7 +8,7 @@
     $( "#datepicker" ).datepicker({
         changeYear: true,
         changeMonth: true,
-        dateFormat: "dd/mm/yy",
+        dateFormat: "yy-mm-dd",
         yearRange: "<?php echo date("Y")-110; ?>:<?php echo date("Y"); ?>"
       });
   } );
