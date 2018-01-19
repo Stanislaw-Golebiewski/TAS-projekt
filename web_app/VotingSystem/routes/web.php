@@ -39,7 +39,13 @@ Route::prefix('debug')->group(function()
 
   Route::get('/voteforuserinvoting/{id}', 'ListController@votelist');
   Route::get('/results', 'ListController@results');
+
+  Route::get('/addcandidate','ListController@addCandidate');
 });
+
+Route::post('/vote', 'ListController@vote')->name('voting.vote');
+Route::post('/addcanidateto', 'ListController@addCandidateTo')->name('voting.addCandidateTo');
+Route::post('/vote', 'ListController@chooseFractionAndNumberOnList')->name('voting.chooseFractionAndNumberOnList');
 
 Auth::routes();
 

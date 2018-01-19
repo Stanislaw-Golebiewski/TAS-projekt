@@ -13,12 +13,8 @@
 
                     @endcomponent
                     <div class="btn-toolbar">
-                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/debug/candidates') }}'">
-                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Lista kandydatów</button>
-                    </div>
-                    <div class="btn-toolbar">
-                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/debug/voteforuser') }}'">
-                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Zagłosuj</button>
+                        <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/debug/lists') }}'">
+                        <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>Lista aktywnych głosowań</button>
                     </div>
                     <div class="btn-toolbar">
                         <button type="button" class="btn btn-primary btn-lg col-md-8 col-md-offset-4" onclick="location.href='{{ url('/debug/results') }}'">

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        <form class="form-horizontal" method="POST" action="{{ route('admin.add') }}">
+        <form class="form-horizontal" method="POST" action="{{ route('voting.vote') }}">
             <div class="panel panel-default">
                 <div class="panel-heading">Lista kandydatów</div>
                     {{ csrf_field() }}
@@ -33,13 +33,14 @@
                         <td><?php echo $candidate->school ?></td>
                         <td><?php echo $candidate->fraction ?></td>
                         <td><?php echo $candidate->numberonlist ?></td>
-                        <td><input type="checkbox" name="choose{{$candidate->id}}"></td>
+                        <td><input type="checkbox" value="{{$candidate->id}}" name="choose"></td>
                       </tr>
                       @endforeach
                     </tbody>
                   </table>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block" name='vote' >
+                <input type="hidden" value="{{$voting}}" name="voting">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>ZAGŁOSUJ</button>
             </div>
         </div>
