@@ -26,7 +26,35 @@ class ListController extends Controller
 
 	public function addCandidateTo(Request $request)
 	{
-		return 'ok';
+		$idCandidate = [];
+		$fractionForCandidate = [];
+		$numberForCandidate = [];
+
+		foreach($request->input('idCandidate') as $id)
+		{
+			$idCandidate[] = $id;
+		}
+
+		foreach($request->input('fraction') as $fraction)
+		{
+			$fractionForCandidate[] = $fraction;
+		}
+
+		foreach ($request->input('numberOnList') as $number) {
+			$numberOnList[] = $number;
+		}
+
+		#todo Sprawdzanie numerów na liście
+
+		for($i = 0; $i < count($idCandidate); $i++)
+		{
+			DB::table('candidates')->insert(
+				['idCandidate' => $idCandidate[$i], 'idVoting' => $request->input('voting'), 'fraction' => $fractionForCandidate[$i], 'numberonlist' => $numberOnList[$i]]
+			);
+		}
+
+		$errorInfo = "Dodano!";
+		return view('vote.error',compact('errorInfo'));
 	}
 
 	public function chooseFractionAndNumberOnList(Request $request)
@@ -34,12 +62,12 @@ class ListController extends Controller
 		$candidates = [];
 		foreach ($request->input('choose') as $candidate)
 		{
-			$candidates[] = get_object_vars((DB::select('SELECT * FROM candidatesInfo WHERE id = '.$candidate ))[0]);
+			$candidates[] = get_object_vars((DB::select('SELECT * FROM candidatesInfo WHERE id = '.addslashes($candidate) ))[0]);
 		}
-		$voting = DB::select('SELECT id, name FROM voting WHERE id = 1');
-		$voting = $voting[0];
+		$voting = DB::select('SELECT id, name FROM voting WHERE id = '.addslashes($request->input('voting')));
+		$voting = get_object_vars($voting[0]);
 		$fractions = DB::select('SELECT id,name,shortName FROM fractions');
-		return view('vote.chooseFractionAndNumberOnList', compact('candidates','voting','fractions'));
+		return view('vote.choosefractionandnumberonlist', compact('candidates','voting','fractions'));
 	}
 
 	public function votelist($data)

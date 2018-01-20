@@ -10,7 +10,7 @@
               <div class="panel-heading">Wybierz głosowanie</div>
                 <div class="panel-body">
                   <div class="col-md-12 selectContainer">
-                    <select class="form-control" name="school">
+                    <select class="form-control" name="voting">
                       <option hidden>Wybierz głosowanie</option>
                       @foreach ($votings as $voting)
                       <option value ="{{$voting->id}}">{{$voting->name}}</option>

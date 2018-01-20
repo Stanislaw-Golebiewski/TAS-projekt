@@ -45,7 +45,7 @@ Route::prefix('debug')->group(function()
 
 Route::post('/vote', 'ListController@vote')->name('voting.vote');
 Route::post('/addcanidateto', 'ListController@addCandidateTo')->name('voting.addCandidateTo');
-Route::post('/vote', 'ListController@chooseFractionAndNumberOnList')->name('voting.chooseFractionAndNumberOnList');
+Route::post('/voted', 'ListController@chooseFractionAndNumberOnList')->name('voting.chooseFractionAndNumberOnList');
 
 Auth::routes();
 

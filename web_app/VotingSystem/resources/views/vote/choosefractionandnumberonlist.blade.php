@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
         <form class="form-horizontal" method="POST" action="{{ route('voting.addCandidateTo') }}">
-            <input type="hidden" name="voting" value="">
+            <input type="hidden" name="voting" value="{{$voting['id']}}">
             <div class="panel panel-default">
-                <div class="panel-heading">Wybierz kandydatów do głosowania: {{$voting->name}} </div>
+                <div class="panel-heading">Wybierz kandydatów do głosowania: {{$voting['name']}} </div>
                   {{ csrf_field() }}
                 <div class="panel-body">
                   <table class="table">
@@ -25,6 +25,7 @@
                     </thead>
                     <tbody>
                       @foreach ($candidates as $candidate)
+                      <input type="hidden" name="idCandidate[]" value="{{$candidate['id']}}">
                       <tr name="dane">
                         <td><?php echo $candidate['id'] ?></td>
                         <td><?php echo $candidate['name'] ?></td>
