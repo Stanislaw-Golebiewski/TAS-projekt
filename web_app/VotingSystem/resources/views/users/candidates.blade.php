@@ -8,7 +8,7 @@
     $( "#datepicker" ).datepicker({
         changeYear: true,
         changeMonth: true,
-        dateFormat: "dd/mm/yy",
+        dateFormat: "yy-mm-dd",
         yearRange: "<?php echo date("Y")-110; ?>:<?php echo date("Y"); ?>"
       });
   } );
@@ -29,8 +29,6 @@
                             <div class="col-md-12" ><input class="form-control" name="name" type="text" placeholder="Imię" required></div>
                             <div class="col-md-12" ><input class="form-control" name="surname" type="text" placeholder="Nazwisko" required></div>
                             <div class="col-md-12" ><input class="form-control" name="born" type="text" placeholder="Data urodzenia" id="datepicker" required></div>
-                            <div class="col-md-12" ><input class="form-control" name="fraction" type="text" placeholder="Partia polityczna" required></div>
-                            <div class="col-md-12" ><input class="form-control" name="numberonlist" type="text" placeholder="Numer na liście" required></div>
                             <div class="col-md-12 selectContainer">
                                 <select class="form-control" name="school">
                                     <option hidden>Wybierz wykształcenie</option>

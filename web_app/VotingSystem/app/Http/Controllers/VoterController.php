@@ -33,7 +33,6 @@ class VoterController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input(['password']));
         $user->passport = $request->input('passport');
-        $user->voted = false;
         $user->save();
 
         return view('admin');

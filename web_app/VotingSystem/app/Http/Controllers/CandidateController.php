@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Candidate;
 use Illuminate\Http\Request;
+use DB;
 
 class CandidateController extends Controller
 {
@@ -27,21 +28,23 @@ class CandidateController extends Controller
 
 	public function add(Request $request)
 	{
-	    $user = new Candidate();
-        $now = Carbon::now();
-        $now->year;
-	    $user->name = $request->input('name');
-	    $user->surname = $request->input('surname');
-	    $user->born = $request->input('born');
-	    $user->school = $request->school;
-	    $user->fraction = $request->input('fraction');
-	    $user->numberonlist = $request->input('numberonlist');
-        if ($user->school == "Wybierz wykształcenie" or $user->numberonlist >= 16 or ($now->year - $user->born <= 22))
-        {
-            return view('error');
-        }
-		$user->votes = 0;
-	    $user->save();
+		DB::table('candidatesInfo')->insert(
+			['name' => $request->input('name'), 'surname' => $request->input('surname'), 'born' => $request->input('born'), 'school' => $request->input('school')]
+		);
+
+	  //   $user = new Candidate();
+    //     $now = Carbon::now();
+    //     $now->year;
+	  //   $user->name = $request->input('name');
+	  //   $user->surname = $request->input('surname');
+	  //   $user->born = $request->input('born');
+	  //   $user->school = $request->input('school');
+    //     if ($user->school == "Wybierz wykształcenie")
+    //     {
+    //         return view('error');
+    //     }
+		// $user->votes = 0;
+	  //   $user->save();
 
 	    return view('admin');
 	}

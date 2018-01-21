@@ -26,7 +26,7 @@ class AdminLoginController extends Controller
     		]);
 
         $client = new Client();
-        
+
         //echo $res->getStatusCode();
             // "200"
         //echo $res->getHeader('content-type');
@@ -36,12 +36,12 @@ class AdminLoginController extends Controller
 		if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
 		{
 			//true
-            $res = $client->request('POST', 'http://vps487563.ovh.net:8080/api/v1/sessions?username=admin&password=d36d19a3-246b-45ef-9038-18de737b103e');
+            //$res = $client->request('POST', 'http://vps487563.ovh.net:8080/api/v1/sessions?username=admin&password=d36d19a3-246b-45ef-9038-18de737b103e');
             return redirect()->intended(route('admin.dashboard'));
 		}
 			//false
 			return redirect()->back()->withInput($request->only('email','remember'));
-    	
+
     }
 
     public function logout()
@@ -50,4 +50,3 @@ class AdminLoginController extends Controller
         return redirect('/');
     }
 }
-

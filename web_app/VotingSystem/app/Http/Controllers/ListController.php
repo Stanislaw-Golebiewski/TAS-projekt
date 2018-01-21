@@ -15,7 +15,44 @@ class ListController extends Controller
 		return view('users.candidatesList', compact('candidates'));
 	}
 
-	public function addCandidate()
+	public function addVoting(Request $request)
+	{
+		DB::table('voting')->insert(
+			['name' => addslashes($request->input('name'))]
+		);
+
+		$info = "Dodano pomyślnie głosowanie!\nDodaj kandydatów i ustal datę rozpoczęcia/zakończenia";
+		return view('vote.ok',compact('info'));
+	}
+
+	public function prepareVotingForm()
+	{
+		$votings = DB::table('voting')->get();
+		return view('vote.prepare',compact('votings'));
+	}
+
+	public function prepareVoting(Request $request)
+	{
+		DB::table('voting')->where(['id' => addslashes($request->input('voting'))])->update(
+			['startDate' => addslashes($request->input('startDate')),
+			'endDate' => addslashes($request->input('endDate'))]
+		);
+
+		$info = "Przygotowano głosowanie!\nRozpocznie się automatycznie ".$request->input('startDate').' i zakończy '.$request->input('endDate');
+		return view('vote.ok',compact('info'));
+	}
+
+	public function addFraction(Request $request)
+	{
+		DB::table('fractions')->insert(
+			['name' => addslashes($request->input('name')), 'shortName' => addslashes($request->input('shortName'))]
+		);
+
+		$info = "Dodano pomyślnie partię!";
+		return view('vote.ok',compact('info'));
+	}
+
+	public function addCandidatesTo()
 	{
 		#$candidates = Listing::all();
 		$candidates = DB::select('SELECT * FROM candidatesInfo');
@@ -24,7 +61,7 @@ class ListController extends Controller
 		return view('vote.addcandidate', compact('candidates','votings','fractions'));
 	}
 
-	public function addCandidateTo(Request $request)
+	public function addCandidatesToVoting(Request $request)
 	{
 		$idCandidate = [];
 		$fractionForCandidate = [];
@@ -53,8 +90,8 @@ class ListController extends Controller
 			);
 		}
 
-		$errorInfo = "Dodano!";
-		return view('vote.error',compact('errorInfo'));
+		$info = "Dodano!";
+		return view('vote.ok',compact('info'));
 	}
 
 	public function chooseFractionAndNumberOnList(Request $request)
@@ -87,7 +124,7 @@ class ListController extends Controller
 			return view('vote.error',compact('errorInfo'));
 		}
 		$userId = Auth::id();
-		$votedIn = DB::select('SELECT idVoting FROM votedin WHERE idVoter = '.$userId);
+		$votedIn = DB::select('SELECT idVoting FROM votedin WHERE idVoter = '.addslashes($request->input('choose')));
 		//$votedIn = json_decode(json_encode($votedIn),true);
 		foreach ($votedIn as $vote) {
 			$vote = get_object_vars($vote);
@@ -99,12 +136,13 @@ class ListController extends Controller
 		}
 		if($userId == "")
 		{
-				return "Error#01";
+				return "Error#01 - Nie jesteś zalogowany";
 		}
 		DB::table('votedin')->insert(
 			['idVoting' => $request->input('voting'), 'idVoter' => $userId]
 		);
-		return view('vote.ok');
+		$info = "Pomyślnie zagłosowano!";
+		return view('vote.ok',compact('info'));
 	}
 
 	public function results()
@@ -115,7 +153,7 @@ class ListController extends Controller
 
 	public function showlists()
 	{
-		$lists = DB::select('SELECT * FROM voting');
+		$lists = DB::select('SELECT * FROM voting WHERE startDate >= '.date('Y-m-d'));
 		return view('lists',compact('lists'));
 	}
 }
