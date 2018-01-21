@@ -8,7 +8,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">Informacja</div>
           <div class="panel-body">
-            Pomyślnie zagłosowano!
+            {{$info}}
           </div>
         </div>
       </form>
