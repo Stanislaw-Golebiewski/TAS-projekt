@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        <form class="form-horizontal" method="POST" action="{{ route('admin.addFraction') }}">
+        <form class="form-horizontal" method="POST" action="{{ route('admin.addVoting') }}">
             <div class="panel panel-default">
                 <div class="panel-heading">Adding Voting</div>
                     {{ csrf_field() }}

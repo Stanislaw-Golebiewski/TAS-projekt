@@ -21,28 +21,18 @@ Route::prefix('debug')->group(function()
       return view('overview');
   });
 
-  Route::get('/addcandidate', function () {
-      return view('users.candidates');
-  });
-
-  Route::get('/addvoter', function () {
-      return view('users.voters');
-  });
-
-  Route::get('/candidates', 'ListController@index');
-
-  Route::get('/lists', 'ListController@showlists');
-
   Route::get('/voteforuserinvoting/{id}', 'ListController@votelist');
   Route::get('/results', 'ListController@results');
 });
 
-Route::post('/vote', 'ListController@vote')->name('voting.vote');
+Route::get('/lists', 'VotingController@showlists');
+Route::post('/vote', 'VotingController@vote')->name('voting.vote');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users/logout','Auth\LoginController@userLogout')->name('admin.login');
+Route::get('/voteforuserinvoting/{id}', 'VotingController@votelist');
 
 Route::prefix('admin')->group(function()
 {
@@ -51,6 +41,9 @@ Route::prefix('admin')->group(function()
 	Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
+
+  Route::get('/addvoting', function(){return view('vote.addvoting');})->name('admin.addVotingForm');
+  Route::post('/addvoting', 'ListController@addVoting')->name('admin.addVoting');
 
   Route::get('/preparevoting', 'ListController@prepareVotingForm')->name('admin.prepareVotingForm');
   Route::post('/preparevoting', 'ListController@prepareVoting')->name('admin.prepareVoting');

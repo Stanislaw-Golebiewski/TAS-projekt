@@ -9,6 +9,12 @@ use Auth;
 
 class ListController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('auth:admin');
+	}
+
 	public function index()
 	{
 		$candidates = Listing::all();
@@ -105,55 +111,5 @@ class ListController extends Controller
 		$voting = get_object_vars($voting[0]);
 		$fractions = DB::select('SELECT id,name,shortName FROM fractions');
 		return view('vote.choosefractionandnumberonlist', compact('candidates','voting','fractions'));
-	}
-
-	public function votelist($data)
-	{
-		#$candidates = Listing::all();
-		$candidates = DB::select('SELECT * FROM candidates INNER JOIN candidatesInfo ON candidates.idCandidate = candidatesInfo.id WHERE candidates.idCandidate = '.$data[0]);
-		$candidates = $candidates;
-		$voting = $data[0];
-		return view('vote.votecandidate', compact('candidates','voting'));
-	}
-
-	public function vote(Request $request)
-	{
-		if($request->input('choose') == '')
-		{
-			$errorInfo = "Nie wybrano kandydata!";
-			return view('vote.error',compact('errorInfo'));
-		}
-		$userId = Auth::id();
-		$votedIn = DB::select('SELECT idVoting FROM votedin WHERE idVoter = '.addslashes($request->input('choose')));
-		//$votedIn = json_decode(json_encode($votedIn),true);
-		foreach ($votedIn as $vote) {
-			$vote = get_object_vars($vote);
-			if($vote['idVoting'] == $request->input('voting'))
-			{
-				$errorInfo = "Już zagłosowano!";
-				return view('vote.error',compact('errorInfo'));
-			}
-		}
-		if($userId == "")
-		{
-				return "Error#01 - Nie jesteś zalogowany";
-		}
-		DB::table('votedin')->insert(
-			['idVoting' => $request->input('voting'), 'idVoter' => $userId]
-		);
-		$info = "Pomyślnie zagłosowano!";
-		return view('vote.ok',compact('info'));
-	}
-
-	public function results()
-	{
-		$candidates = Listing::all();
-		return view('vote.results', compact('candidates'));
-	}
-
-	public function showlists()
-	{
-		$lists = DB::select('SELECT * FROM voting WHERE startDate >= '.date('Y-m-d'));
-		return view('lists',compact('lists'));
 	}
 }

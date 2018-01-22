@@ -33,7 +33,7 @@
                         <td><?php echo $candidate->school ?></td>
                         <td><?php echo $candidate->fraction ?></td>
                         <td><?php echo $candidate->numberonlist ?></td>
-                        <td><input type="checkbox" value="{{$candidate->id}}" name="choose"></td>
+                        <td><input type="checkbox" value="{{$candidate->id}}" name="choose" onchange="cbChange(this)"></td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -46,4 +46,13 @@
         </div>
     </div>
 </div>
+<script>
+function cbChange(obj) {
+    var cbs = document.getElementsByName("choose");
+    for (var i = 0; i < cbs.length; i++) {
+        cbs[i].checked = false;
+    }
+    obj.checked = true;
+}
+</script>
 @endsection
