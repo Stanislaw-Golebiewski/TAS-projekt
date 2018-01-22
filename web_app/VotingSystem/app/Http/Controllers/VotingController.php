@@ -44,9 +44,10 @@ class VotingController extends Controller
       {
         return redirect ('/');
       }
-  		$candidates = DB::select('SELECT candidatesInfo.id as id, candidatesInfo.name as name, candidatesInfo.surname, candidatesInfo.born as born, candidatesInfo.school as school, fractions.name as fraction, candidates.numberonlist as numberonlist
+
+  		$candidates = DB::select('SELECT candidatesinfo.id as id, candidatesinfo.name as name, candidatesinfo.surname, candidatesinfo.born as born, candidatesinfo.school as school, fractions.name as fraction, candidates.numberonlist as numberonlist
         FROM candidates
-        INNER JOIN candidatesInfo ON candidates.idCandidate = candidatesInfo.id
+        INNER JOIN candidatesinfo ON candidates.idCandidate = candidatesinfo.id
         INNER JOIN fractions ON candidates.fraction = fractions.id
         WHERE candidates.idVoting = '.addslashes($data)
       );
@@ -82,6 +83,8 @@ class VotingController extends Controller
   				return "Error#01 - Nie jesteś zalogowany";
   		}
 
+      //exec('');
+
   		DB::table('votedin')->insert(
   			['idVoting' => $request->input('voting'), 'idVoter' => $userId]
   		);
@@ -98,6 +101,7 @@ class VotingController extends Controller
 
   	public function showlists()
   	{
+      date_default_timezone_set('Europe/Warsaw');
   		$lists = DB::select('SELECT * FROM voting WHERE startDate >= '.date('Y-m-d')); //.' AND endDate <= '.date('Y-m-d'));
   		return view('lists',compact('lists'));
   	}
