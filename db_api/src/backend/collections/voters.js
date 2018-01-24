@@ -22,7 +22,7 @@ module.exports = function(App) {
 			},
 			{
 				name: "email",
-				type: "text",
+				type: "email",
 				required: true,
 			},
 			{

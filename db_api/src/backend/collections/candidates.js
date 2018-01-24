@@ -2,22 +2,22 @@
 
 module.exports = function(App) {
 	return App.createCollection({
-		name: "admins",
+		name: "candidates",
 		fields: [
 			{
-				name: "user",
-				type: "single_reference",
-				params: { collection: "users" },
+				name: "name",
+				type: "text",
 				required: true,
 			},
 			{
-				name: "email",
-				type: "email",
+				name: "surname",
+				type: "text",
 				required: true,
 			},
 		],
 		access_strategy: {
 			default: ["roles", ["admin"]],
+			retrive: ["public"],
 			delete: "noone",
 		},
 	});

@@ -12,6 +12,9 @@ const dependencies = [
 	"collections/voting.js",
 	"collections/voted_in.js",
 	"collections/admins.js",
+	"collections/candidates.js",
+	"collections/fractions.js",
+	"collections/lists.js",
 ];
 
 dependencies.forEach(dependency => require(`./${dependency}`)(App));
