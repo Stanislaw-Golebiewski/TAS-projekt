@@ -1,4 +1,4 @@
-# TAS API - dokumentacja v1.1
+# TAS API - dokumentacja v1.2
 
 ---
 
@@ -194,6 +194,59 @@ dostęp:
 
 ---
 
+#### **candidates**
+
+opis: _inforamcje o kandydatach_
+
+pola:
+
+* **name** - imię
+* **surname** - nazwisko
+
+dostęp:
+
+* **admin** - wszystkie akcje z wyjątkiem usuwania
+* informacje są udostępniane publicznie do wglądu
+
+---
+
+#### **fractions**
+
+opis: _informacje o partiach_
+
+pola:
+
+* **name** - nazwa partii
+* **short_name** - krótka nazwa, akronim
+* **leader** - id kandydata z kolekcji **candidates** który jest liderem partii
+
+dostęp:
+
+* **admin** - wszystkie akcje z wyjątkiem usuwania
+* informacje są udostępniane publicznie do wglądu
+
+---
+
+#### **lists**
+
+opis: _informacja o dostępnych listach w danym głosowaniu_
+
+pola:
+
+* **voting** - id głosowania z kolekcji **voting**
+* **candidate** - id kandydata z kolekcji **candidates** którego dotyczy wpis
+* **fraction** - id frakcji z kolekcji **fractions** z ramienia której startuje kandydat podczas danego głosowania
+* **number** - numer kandydata na danej liście
+
+dostęp:
+
+* **admin** - wszystkie akcje z wyjątkiem usuwania
+* informacje są udostępniane publicznie do wglądu
+
+---
+
 ### Testowanie
 
-Jeśli API zawodzi i chcecie się upewnić czy jest to problem wewnatrz waszej aplikacji czy błąd w API, lub chcielibyście podejrzeć co dokładnie jest zwracane, można użyć narzędzi takich jak [postman](https://www.getpostman.com/apps), [httpie](https://httpie.org/), czy curl
+Jeśli API zawodzi i chcecie się upewnić czy jest to problem wewnatrz waszej aplikacji czy błąd w API, lub chcielibyście podejrzeć co dokładnie jest zwracane, można użyć narzędzi takich jak [postman](https://www.getpostman.com/apps), [httpie](https://httpie.org/), czy curl.
+
+Dobrze jest też obserwować zwracane [kody odpowiedzi HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) które mogą stanowić cenną informacje o tym co poszło nie tak.
