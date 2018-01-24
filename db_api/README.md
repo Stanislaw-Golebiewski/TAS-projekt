@@ -1,5 +1,7 @@
 # TAS API - dokumentacja v1.0
 
+[Dostępne kolekcje](#dostępne-kolekcje)
+
 ### Logowanie
 
 By wykonywać zapytania do api użytkownik najpierw musi się zalogować i utworzyć sesje. Endpointem do naszego api jest **/api/v1/sessions**,
@@ -76,7 +78,7 @@ Jeśli dodanie zasobu zakończy się powodzeniem, to zostanie nam zwrócony doda
 
 Jeśli dodanie się nie uda, zostanie zwrócony odpowiedni komunikat z opisem błedu
 
-### Dostępne kolekcje
+###Dostępne kolekcje
 
 #### **users**
 
@@ -85,19 +87,33 @@ opis: _do przechowywania kont wszystkich urzytkowników_
 pola:
 
 * **username** - nazwa urzytkownika
-* **password** - hasło
-* **role** - rola, na chwilę obecną mamy dostępne:
+* **password** - hasło, nie jest jawne w bazie
+* **role** - rola, na chwilę obecną mamy dostępne (dwie ostatnie nie są na razie używane):
 
-  * admin
-  * komisja_lokalna
-  * komisja_centralna
-  * wyborca
+    * admin
+    * voter
+    * komisja_lokalna
+    * komisja_centralna
 
 dostęp:
 
-* **admin** ma prawo do tworzenia nowym użytkowników, oraz podglądu i edycji wszystkich
-* **wyborca** może zobaczyć i edytować tylko siebie
+* **admin** ma prawo do tworzenia nowych użytkowników, oraz podglądu i edycji wszystkich
+* **voter** może zobaczyć i edytować tylko swoje dane
 * nikt nie ma prawa do usuwania czegokolwiek
+
+#### **admins**
+
+opis: _do przechowywania informacji o administratorach_
+
+pola:
+
+* **user** - id usera (konta) z którym powiązany jest dany admin
+* **email** - adres email
+
+dostęp:
+
+* **admin** - wszystkie akcje z wyjątkiem usuwania
+* **voter** - nie ma dostępu
 
 #### **voters**
 
@@ -106,16 +122,49 @@ opis: _do przechowywania danych związanych z wyborcami_
 pola:
 
 * **user** - id usera (konta) z którym powiązany jest wyborca
-* **imię**
-* **nazwisko**
-* **numer_telefonu** - na razie typu text, czyli można tam dać wszystko
-* **adres** - też tekst, tak, będzie trzeba rozbić na mniejsze pola :)
+* **name** - imię
+* **surname** - nazwisko
+* **email** - adres emial wyborcy
+* **document_type** - typ dokumentu podany przez wyborce podszas tworzenia konta, dostępne są:
+    * passport
+    * identity_card
+* **document_code** - kod podanego dokumentu
 
 dostęp:
 
 * **admin** ma prawo do tworzenia nowych wyborców, edytowania ich i podglądu wszystkich
-* **wyborca** może podejrzeć tylko swoje dane
+* **voter** może podejrzeć tylko swoje dane
 * nikt nie ma prawa do usuwania czegokolwiek
+
+#### **voting**
+
+opis: _reprezentuje pojedyńcze głosowanie_
+
+pola:
+
+* **name** - nazwa głosowania
+* **start_date** - data początku głosowania w formacie YYYY-MM-DD
+* **end_date** - data zakończenia głosowania w formacie YYYY-MM-DD
+
+dostęp:
+
+* **admin** - wszystkie akcje z wyjątkiem usuwania
+* **voter** - tylko podgląd
+
+#### **voted_in**
+
+opis: _informuje czy dany wyborca oddał głos w danym głosowaniu_
+
+pola:
+
+* **voter** - id wyborcy (voter)
+* **voting** - id głosowania (voting)
+
+dostęp:
+
+* **admin** - wszystkie akcje z wyjątkiem usuwania
+* **voter** - podgląd oraz dodawanie
+    * dostęp wyborcy będzie jeszcze zmodyfikowany
 
 ### Testowanie
 
