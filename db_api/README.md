@@ -1,6 +1,18 @@
-# TAS API - dokumentacja v1.0
+# TAS API - dokumentacja v1.1
+
+---
+
+[Logowanie](#logowanie)
+
+[Wydobywanie zasobów](#wydobywanie-zasobów)
+
+[Dodawanie zasobów](#dodawanie-zasobów)
 
 [Dostępne kolekcje](#dostępne-kolekcje)
+
+[Testowanie](#testowanie)
+
+---
 
 ### Logowanie
 
@@ -30,6 +42,8 @@ Jeśli dane są poprawne zostanie zwrócona informacja o powodzeniu, razem z coo
 
 Jeśli coś się nie będzie zgadzać, np. podamy złe hasło, zostanie zwrócona odpowiednia informacja
 
+---
+
 ### Wydobywanie zasobów
 
 Do wydobycia zasobów służy metoda **GET**.
@@ -49,6 +63,8 @@ GET http://<tutaj_url>:8080/api/v1/collections/<nazwa_kolekcji>/<id_zasobu>
 
 GET http://<tutaj_url>:8080/api/v1/collections/voters/S1gt6kt
 ```
+
+---
 
 ### Dodawanie zasobów
 
@@ -78,6 +94,8 @@ Jeśli dodanie zasobu zakończy się powodzeniem, to zostanie nam zwrócony doda
 
 Jeśli dodanie się nie uda, zostanie zwrócony odpowiedni komunikat z opisem błedu
 
+---
+
 ### Dostępne kolekcje
 
 #### **users**
@@ -101,6 +119,8 @@ dostęp:
 * **voter** może zobaczyć i edytować tylko swoje dane
 * nikt nie ma prawa do usuwania czegokolwiek
 
+---
+
 #### **admins**
 
 opis: _do przechowywania informacji o administratorach_
@@ -114,6 +134,8 @@ dostęp:
 
 * **admin** - wszystkie akcje z wyjątkiem usuwania
 * **voter** - nie ma dostępu
+
+---
 
 #### **voters**
 
@@ -136,6 +158,8 @@ dostęp:
 * **voter** może podejrzeć tylko swoje dane
 * nikt nie ma prawa do usuwania czegokolwiek
 
+---
+
 #### **voting**
 
 opis: _reprezentuje pojedyńcze głosowanie_
@@ -151,6 +175,8 @@ dostęp:
 * **admin** - wszystkie akcje z wyjątkiem usuwania
 * **voter** - tylko podgląd
 
+---
+
 #### **voted_in**
 
 opis: _informuje czy dany wyborca oddał głos w danym głosowaniu_
@@ -165,6 +191,8 @@ dostęp:
 * **admin** - wszystkie akcje z wyjątkiem usuwania
 * **voter** - podgląd oraz dodawanie
     * dostęp wyborcy będzie jeszcze zmodyfikowany
+
+---
 
 ### Testowanie
 
