@@ -22,12 +22,10 @@ zalogowanie odbywa się przez wykonanie odpowiedniego **POST**-a pod adres
 ```
 http://<tutaj_url>:8080/api/v1/sessions
 
-lub
+http://<tutaj_url>/api/v1/sessions
 
-https://<tutaj_url>:80/api/v1/sessions
+https://<tutaj_url>/api/v1/sessions
 ```
-
-_**Druga metoda protokołem HTTPS jest lepsza**_
 
 Tak powinna wyglądać zawartoś POST-a który wysyłamy:
 
@@ -40,7 +38,46 @@ Tak powinna wyglądać zawartoś POST-a który wysyłamy:
 
 Jeśli dane są poprawne zostanie zwrócona informacja o powodzeniu, razem z cookie, które utrzyma nam sesje
 
-Jeśli coś się nie będzie zgadzać, np. podamy złe hasło, zostanie zwrócona odpowiednia informacja
+```
+HTTP/1.1 200 OK
+Connection: keep-alive
+Date: Wed, 24 Jan 2018 13:04:16 GMT
+Transfer-Encoding: chunked
+cache-control: no-cache
+content-encoding: gzip
+content-type: application/json; charset=utf-8
+set-cookie: sealious-session=58472e67-6e40-4b0f-9476-6c69a62171e7; Max-Age=86400; Expires=Thu, 25 Jan 2018 13:04:16 GMT; HttpOnly; SameSite=Strict; Path=/
+set-cookie: sealious-anon=a3dcea43-2bab-4d0e-ae3b-93a931248e00; Max-Age=86400; Expires=Thu, 25 Jan 2018 13:04:16 GMT; HttpOnly; SameSite=Strict; Path=/
+vary: accept-encoding
+
+{
+    "data": {},
+    "message": "Logged in!",
+    "status": "success"
+}
+```
+
+Jeśli coś się nie będzie zgadzać, np. podamy złe hasło, zostanie zwrócona odpowiednia informacja w sekcji **message**
+
+```
+HTTP/1.1 401 Unauthorized
+Connection: keep-alive
+Date: Wed, 24 Jan 2018 13:05:57 GMT
+Transfer-Encoding: chunked
+cache-control: no-cache
+content-encoding: gzip
+content-type: application/json; charset=utf-8
+vary: accept-encoding
+
+{
+    "data": {},
+    "is_developer_fault": false,
+    "is_user_fault": true,
+    "message": "User/password mismatch",
+    "sealious_error": true,
+    "type": "invalid_credentials"
+}
+```
 
 ---
 
