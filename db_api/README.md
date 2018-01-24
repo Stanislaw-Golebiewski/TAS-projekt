@@ -78,7 +78,7 @@ Jeśli dodanie zasobu zakończy się powodzeniem, to zostanie nam zwrócony doda
 
 Jeśli dodanie się nie uda, zostanie zwrócony odpowiedni komunikat z opisem błedu
 
-###Dostępne kolekcje
+### Dostępne kolekcje
 
 #### **users**
 
